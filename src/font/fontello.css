@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+ @font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?5453145');
+  src: url('../font/fontello.eot?5453145#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff2?5453145') format('woff2'),
+       url('../font/fontello.woff?5453145') format('woff'),
+       url('../font/fontello.ttf?5453145') format('truetype'),
+       url('../font/fontello.svg?5453145#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?5453145#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+ 
+  display: inline-block;
+}
+ 
+.icon-ok:before { content: '\2713'; } /* '✓' */
+.icon-ok-circled:before { content: '\2714'; } /* '✔' */
+.icon-cancel:before { content: '\2715'; } /* '✕' */
+.icon-cancel-circled:before { content: '\2716'; } /* '✖' */
+.icon-ok-circled2:before { content: '\e702'; } /* '' */
+.icon-adjust:before { content: '\e793'; } /* '' */
+.icon-lightbulb:before { content: '\f0eb'; } /* '' */
+.icon-ok-squared:before { content: '\f14a'; } /* '' */
+.icon-thumbs-up-alt:before { content: '\f164'; } /* '' */
+.icon-thumbs-down-alt:before { content: '\f165'; } /* '' */
+.icon-toggle-off:before { content: '\f204'; } /* '' */
+.icon-toggle-on:before { content: '\f205'; } /* '' */
+.icon-thumbs-up:before { content: '👍'; } /* '\1f44d' */
+.icon-thumbs-down:before { content: '👎'; } /* '\1f44e' */

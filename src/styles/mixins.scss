@@ -1,0 +1,43 @@
+@mixin w-from($screen) {
+    @media (min-width: $screen){
+        @content;
+    }
+}
+
+@mixin w-to($screen) {
+    @media (max-width: $screen - 1px){
+        @content;
+    }
+}
+
+@mixin w-range($screen1, $screen2) {
+    @media (min-width: $screen1) and (max-width: $screen2 -1px){
+        @content;
+    }
+    
+}
+
+
+@mixin grid_movie_settings {
+    background-size: 100%;
+    width: 150px;
+    height: 200px;
+}
+
+@mixin grid_music_settings {
+    background-size: cover;
+    width: 150px;
+    height: 200px;
+}
+
+@mixin grid_margin_bottom{
+    margin-bottom: 10px;
+}
+
+@mixin black_theme{
+
+}
+
+@mixin white_theme{
+    
+}

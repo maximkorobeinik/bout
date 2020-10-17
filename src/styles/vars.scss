@@ -1,0 +1,17 @@
+$screen-sm: 320px;
+$screen-md: 760px;
+$screen-lg: 1000px;
+$screen-xl: 1366px;
+
+$transition-normal: .25s;
+$transition-fast: .15s;
+
+$font-family-default: grey;
+
+$color-text-default: black;
+$color-text-light: grey;
+
+$color-accent: orange;
+
+$color-link: $color-accent;
+$color-link-active: darken($color-accent, 15%);

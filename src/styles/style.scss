@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;400;500;600;700;800&display=swap');
+@import 'mixins';
+@import 'vars';
+@import '../font/css/fontello.css';
+
+@font-face {
+    font-family: 'fontello';
+    src:url('../font/fontello.woff2?5453145') format('woff2'),
+        url('../font/fontello.woff?5453145') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: never;
+    margin-right: 5px;
+    display: inline-block;
+  }
+   
+  .icon-ok:before { content: '\2713'; } 
+  .icon-ok-circled:before { content: '\2714'; } 
+  .icon-cancel:before { content: '\2715'; }
+ 
+
+// CSS RESET
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+// CSS RESET END
+
+:root{
+    --page_text_colorblack: #d9d9d9;
+    --page_text_colorwhite: #111111;
+    --caption_color: #afafaf;
+    --bg-color: #363636;
+}
+
+
+body{
+    font-family: 'Fira Sans', sans-serif;
+    background: #ffffff;
+    height: 100vh;
+    width: auto;
+
+    #container{
+        display: grid;
+        grid-template-areas: "photo"
+        "about_me"
+        "movies";
+        grid-template-columns: 100%;
+        grid-template-rows: 240px 1fr auto;
+        overflow: hidden;
+
+        @include w-from($screen-xl){
+            grid-template-areas: "photo about_me movies";
+            grid-template-columns: 300px 1fr 400px;
+            grid-template-rows: 100%;
+            align-items: center;
+        }
+
+        .my_photo_etc{
+            grid-area: photo;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            background: #4b7ce0;
+            position: relative;
+
+            @include w-from($screen-xl){
+                height: 100%;
+                background: -webkit-gradient(linear, left bottom, left top, from(#1916b9), to(#5451ff));
+            }
+
+            input:checked, input:checked + .about_me {
+                background: #121212;
+                
+              }
+            
+            img{
+                width: 150px;
+                height: 150px;
+                clip-path: circle(50%);
+            }
+            p{
+                color: #090909;
+                font-size: 20px;
+            }
+
+            input.light_mode{
+                background: url('../assets/icons/moon.svg') no-repeat;
+                background-size: 100%;
+                border: none;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+            
+        }
+        .about_me{
+            grid-area: about_me;
+            padding: 20px;
+            padding-bottom: 0;
+
+            @include w-from($screen-xl){
+                height: 100%;
+                padding-top: 300px;
+            }
+
+
+            h1{
+                font-size: 20px;
+                text-align: center;
+                color: var(--page_text_colorwhite, var(--page_text_colorblack));
+            }
+
+            p{
+                color: var(--page_text_colorwhite, var(--page_text_colorblack));
+                padding-top: 20px;
+            }
+
+            figure{
+                margin-right: 5px;
+                display: inline-flex;
+            }
+        }
+
+
+        .fav_movies{
+            background: rgb(24, 24, 24);
+            .movie_caption{
+                p.movies_cap{
+                    text-align: center;
+                    color: var(--caption_color);
+                    padding-top: 10px;
+                }
+                i.movies_cap{
+                    font-style: italic;
+                    color: var(--caption_color);
+                    font-weight: 300;
+                    display: flex;
+                    justify-content: end;
+                    padding: 5px;
+                    padding-top: 15px;
+                    font-size: 12px;
+                }
+            }
+            .movies_content{
+                grid-area: movies;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-gap: 7px;
+                padding: 6px;
+                padding-top: 40px;
+                justify-items: center;
+                
+                // @include w-from($screen-xl){
+                //     grid-template-columns: repeat(auto-fill, 150px);
+                // }
+                a{
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                }
+                
+                .filler{
+                    width: 150px;
+                    height: 200px;
+                    background: rgba(0, 0, 0, 0.5);
+                    display: grid;
+                    justify-content: center;
+                    align-content: space-around;
+                    opacity: 0;
+                    transition: 0.2s;
+                    
+                    a{
+                        color: #cecece;
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        text-decoration: none;
+                        font-size: 16px;
+                        &:hover{
+                            color: #ffd6a0;
+                        }
+                    }
+                }
+                .grid_movie_1{
+                    background: url("../assets/img/book_eli.jpg") no-repeat;
+                    @include grid_movie_settings()
+                    &:hover .filler{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_movie_2{
+                    background: url("../assets/img/dawn_dead.jpg");
+                    @include grid_movie_settings()
+                    &:hover .filler{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_movie_3{
+                    background: url("../assets/img/escape_room.png");
+                    @include grid_movie_settings()
+                    &:hover .filler{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_movie_4{
+                    background: url("../assets/img/exam.jpg");
+                    @include grid_movie_settings()
+                    &:hover .filler{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_movie_5{
+                    background: url("../assets/img/nobody_knows.jpg");
+                    @include grid_movie_settings()
+                    &:hover .filler{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_movie_6{
+                    background: url("../assets/img/oldboy.jpg");
+                    @include grid_movie_settings()
+                    &:hover .filler{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_movie_7{
+                    background: url("../assets/img/black_mirror.jpg");
+                    @include grid_movie_settings()
+                    &:hover .filler{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+            }
+
+            .music_caption{
+                p{
+                    color: var(--caption_color);
+                    text-align: center;
+                    font-size: 16px;
+                    padding-top: 20px;
+                }
+            }
+
+            .music_content{
+                grid-area: movies;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-gap: 7px;
+                padding: 6px;
+                padding-top: 40px;
+                justify-items: center;
+                .filler_music{
+                    width: 150px;
+                    height: 200px;
+                    background: rgba(0, 0, 0, 0.5);
+                    display: grid;
+                    justify-content: center;
+                    align-content: space-around;
+                    opacity: 0;
+                    transition: 0.2s;
+                    
+                    a{
+                        color: #cecece;
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        text-decoration: none;
+                        font-size: 16px;
+                        &:hover{
+                            color: #ffd6a0;
+                        }
+                    }
+                }
+                
+                .grid_music1{
+                    background: url(../assets/img/count_your_blessings.jpg) no-repeat;
+                    @include grid_music_settings()
+                    &:hover .filler_music{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_music2{
+                    background: url(../assets/img/foriamking_revengeance.jpg) no-repeat;
+                    @include grid_music_settings()
+                    &:hover .filler_music{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_music3{
+                    background: url(../assets/img/pendulum_holdcolor.png) no-repeat;
+                    @include grid_music_settings()
+                    &:hover .filler_music{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_music4{
+                    background: url(../assets/img/infectedrain_86.jpg) no-repeat;
+                    @include grid_music_settings()
+                    &:hover .filler_music{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+                .grid_music5{
+                    background: url(../assets/img/beatdown_heroes.jpg) no-repeat;
+                    @include grid_music_settings()
+                    &:hover .filler_music{
+                        opacity: 1;
+                    }
+                    @include w-from($screen-xl){
+                        @include grid_margin_bottom()
+                    }
+                }
+            }
+        }
+    }
+}

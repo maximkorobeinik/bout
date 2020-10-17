@@ -1,0 +1,20 @@
+
+/*
+
+
+.mod-no-lg{
+    @include w-from($screen-lg){display: none !important;}
+}
+
+.mod-no-sm{
+    @include w-to($screen-md){display: none !important;}
+}
+
+.mod-only-lg{
+    @include w-to($screen-lg){display: none !important;}
+}
+.mod-only-sm{
+    @include w-from($screen-lg){display: none !important;}
+}
+
+*/
